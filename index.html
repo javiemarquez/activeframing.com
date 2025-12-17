@@ -5,7 +5,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Active Framing, Inc. - Custom residential framing contractor serving San Diego County. CSLB #1067252">
-
   <title>Active Framing, Inc. – Custom Residential Framing Across San Diego County</title>
 
   <!-- Favicons -->
@@ -14,6 +13,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#C41E3A">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,6 +28,9 @@
       color: #000;
       line-height: 1.6;
     }
+
+    /* Keep phrases together (prevents “Diego County” split) */
+    .nowrap { white-space: nowrap; }
 
     /* ===== HEADER ===== */
     header {
@@ -53,6 +56,7 @@
       height: 84px;
       width: auto;
       display: block;
+      image-rendering: auto;
     }
 
     .cta-button {
@@ -60,7 +64,7 @@
       color: #fff;
       text-decoration: none;
       padding: .8rem 1.75rem;
-      border-radius: 6px;
+      border-radius: 10px;
       font-weight: 500;
       border: 0;
       cursor: pointer;
@@ -74,28 +78,51 @@
       box-shadow: 0 10px 22px rgba(196, 30, 58, 0.18);
     }
 
-    /* ===== HERO (Background Image) ===== */
+    /* ===== HERO (Full background + adjustable overlay) ===== */
     .hero {
-      padding: 5rem 2rem;
+      position: relative;
       text-align: center;
 
-      /* Background image + white overlay for readability */
-      background:
-        linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)),
-        url("bg.jpg");
+      /* Full-screen feel on desktop */
+      min-height: calc(100vh - 120px);
+      padding: 5.5rem 2rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background-image: url("bg.jpg");
       background-size: cover;
-      background-position: center;
+      background-position: center center;
       background-repeat: no-repeat;
     }
 
+    /* Overlay controls how visible the background is (lower = more visible) */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.72); /* was ~0.88; this shows the photo more */
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
     .hero h1 {
-      font-size: 3rem;
+      /* Responsive sizing + better control across devices */
+      font-size: clamp(2.1rem, 4vw, 3.25rem);
       margin-bottom: 1rem;
-      line-height: 1.15;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
     }
 
     .hero h2 {
-      font-size: 1.4rem;
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
       font-weight: 300;
       margin-bottom: 2.5rem;
       color: #333;
@@ -126,7 +153,7 @@
       border: 2px solid #e5e5e5;
       padding: 2rem;
       text-align: center;
-      border-radius: 8px;
+      border-radius: 12px;
       background: #fff;
       box-shadow: 0 6px 18px rgba(0,0,0,0.04);
     }
@@ -143,7 +170,7 @@
 
     .contact-card {
       border: 1px solid #e5e5e5;
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 1.75rem;
       background: #fff;
       box-shadow: 0 6px 18px rgba(0,0,0,0.04);
@@ -164,7 +191,7 @@
       width: 100%;
       padding: .85rem .9rem;
       border: 1px solid #d8d8d8;
-      border-radius: 10px;
+      border-radius: 12px;
       font: inherit;
     }
 
@@ -191,7 +218,7 @@
     .footer-logo {
       height: 36px;
       width: auto;
-      opacity: .85;
+      opacity: .9;
       margin-bottom: 1rem;
     }
 
@@ -206,7 +233,7 @@
       background: #C41E3A;
       display: inline-block;
       padding: .5rem 1rem;
-      border-radius: 4px;
+      border-radius: 6px;
       margin-top: .75rem;
     }
 
@@ -221,12 +248,12 @@
     /* ===== MOBILE ===== */
     @media (max-width: 900px) {
       .contact-wrap { grid-template-columns: 1fr; }
+      .hero { min-height: auto; padding: 5rem 1.25rem; }
     }
 
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2rem; }
-      .hero h2 { font-size: 1.2rem; }
       .logo img { height: 64px; }
+      .hero::before { background: rgba(255,255,255,0.70); } /* slightly more photo on mobile too */
     }
   </style>
 </head>
@@ -243,9 +270,11 @@
 </header>
 
 <section class="hero" id="home">
-  <h1>Custom Residential Framing Across San Diego County</h1>
-  <h2>Building with Integrity — Framing Done Right</h2>
-  <a href="#contact" class="cta-button">Get Your Free Estimate</a>
+  <div class="hero-content">
+    <h1>Custom Residential Framing Across <span class="nowrap">San Diego County</span></h1>
+    <h2>Building with Integrity — Framing Done Right</h2>
+    <a href="#contact" class="cta-button">Get Your Free Estimate</a>
+  </div>
 </section>
 
 <section>
