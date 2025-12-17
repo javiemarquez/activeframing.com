@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Active Framing, Inc. - Professional framing contractor serving San Diego County. Custom homes, ADUs, remodels & additions. CSLB License #1067252">
+    <title>Active Framing, Inc. - Modern Framing for San Diego Homes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+rel="preconnect"
+href="https://stackoverflow.com/questions/73838138/why-google-font-preconnects-to-fonts-googleapis-com"
+crossorigin
+>
+    <link href="https://fonts.google.com/specimen/Roboto" rel="stylesheet">
+    
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #000000;
+            background-color: #FFFFFF;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #E5E5E5;
+            padding: 1.25rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            display: block;
+        }
+
+        .cta-button {
+            background-color: #C41E3A;
+            color: #FFFFFF;
+            padding: 0.75rem 1.75rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            background-color: #A01830;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #F5F5F5 0%, #FFFFFF 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #000000;
+            line-height: 1.2;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #333333;
+            margin-bottom: 2rem;
+        }
+
+        .hero .cta-button {
+            font-size: 1.125rem;
+            padding: 1rem 2.5rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            background-color: #FFFFFF;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #000000;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            padding: 2rem;
+            border: 2px solid #E5E5E5;
+            border-radius: 4px;
+            text-align: center;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: #C41E3A;
+            transform: translateY(-4px);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #000000;
+        }
+
+        .service-card p {
+            color: #333333;
+            line-height: 1.7;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            padding: 5rem 2rem;
+            background-color: #F9F9F9;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #C41E3A;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+            color: #FFFFFF;
+        }
+
+        .feature-item h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: #000000;
+        }
+
+        .feature-item p {
+            color: #333333;
+            line-height: 1.7;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 5rem 2rem;
+            background-color: #FFFFFF;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            margin: 0;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #FFFFFF;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item figcaption {
+            padding: 0.75rem 1rem;
+            background-color: #FFFFFF;
+            color: #333333;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-align: center;
+            border-top: 1px solid #E5E5E5;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background-color: #F9F9F9;
+        }
+
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background-color: #FFFFFF;
+            padding: 2.5rem;
+            border-radius: 4px;
+            border: 1px solid #E5E5E5;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #000000;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #D0D0D0;
+            border-radius: 4px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #C41E3A;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group .required {
+            color: #C41E3A;
+        }
+
+        .submit-button {
+            width: 100%;
+            background-color: #C41E3A;
+            color: #FFFFFF;
+            padding: 1rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.125rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: #A01830;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1A1A1A;
+            color: #FFFFFF;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #FFFFFF;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #CCCCCC;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: #C41E3A;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333333;
+            padding-top: 1.5rem;
+            text-align: center;
+            color: #999999;
+            font-size: 0.9rem;
+        }
+
+        .license-badge {
+            display: inline-block;
+            background-color: #C41E3A;
+            color: #FFFFFF;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 1200px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1199px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.25rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .header-container {
+                padding: 0 1rem;
+            }
+
+            .hero,
+            .services,
+            .why-choose,
+            .gallery,
+            .contact {
+                padding: 3rem 1rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .services-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            .cta-button {
+                padding: 0.6rem 1.25rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero .cta-button {
+                font-size: 1rem;
+                padding: 0.875rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a
+href="#"
+class="logo"
+aria-label="Active Framing, Inc. Home"
+>
+                <img src="images/logo.png" alt="Active Framing, Inc." />
+            </a>
+            <a
+href="#contact"
+class="cta-button"
+aria-label="Request a Bid"
+>Request a Bid</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <h1>Modern Framing for San Diego Homes</h1>
+            <h2>Building with Integrity — Framing Done Right</h2>
+            <a
+href="#contact"
+class="cta-button"
+aria-label="Get Your Free Estimate"
+>Get Your Free Estimate</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Custom Homes</h3>
+                    <p>Expert framing for new custom home construction. We work with precision and attention to detail to bring your vision to life with structural integrity.</p>
+                </div>
+                <div class="service-card">
+                    <h3>ADUs</h3>
+                    <p>Accessory Dwelling Units built to code and crafted with care. Maximize your property value with quality framing for your ADU project.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Remodels & Additions</h3>
+                    <p>Seamless integration of new framing with existing structures. From room additions to complete remodels, we deliver quality workmanship.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose" id="why-choose">
+        <div class="section-container">
+            <h2 class="section-title">Why Choose Active Framing</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon" aria-hidden="true">✓</div>
+                    <h3>Owner-Supervised Work</h3>
+                    <p>Every project receives direct oversight from our experienced owner, ensuring quality and accountability at every stage.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon" aria-hidden="true">✓</div>
+                    <h3>Code-Compliant Framing</h3>
+                    <p>We stay current with California building codes and ensure all work meets or exceeds regulatory requirements.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon" aria-hidden="true">✓</div>
+                    <h3>Clean Job Sites</h3>
+                    <p>Professional work means professional job sites. We maintain clean, organized work areas and respect your property.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon" aria-hidden="true">✓</div>
+                    <h3>Reliable Scheduling</h3>
+                    <p>We show up on time and keep your project on track. Clear communication and dependable service you can count on.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="section-container">
+            <h2 class="section-title">Project Gallery</h2>
+            <div class="gallery-grid">
+                <figure class="gallery-item">
+                    <img src="images/project_1.jpg" alt="Custom home framing project" loading="lazy" />
+                    <figcaption>Custom Home Framing</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/project_2.jpg" alt="Residential framing construction" loading="lazy" />
+                    <figcaption>Residential Construction</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/project_3.jpg" alt="New construction framing" loading="lazy" />
+                    <figcaption>New Construction</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/project_4.jpg" alt="Structural framing work" loading="lazy" />
+                    <figcaption>Structural Framing</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/project_5.jpg" alt="Aerial view of framing project" loading="lazy" />
+                    <figcaption>Aerial Project View</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <h2 class="section-title">Request a Bid</h2>
+            <form
+class="contact-form"
+id="contactForm"
+aria-label="Contact Form"
+>
+                <div class="form-group">
+                    <label for="name">Name <span class="required">*</span></label>
+                    <input
+type="text"
+id="name"
+name="name"
+required
+aria-required="true"
+>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone <span class="required">*</span></label>
+                    <input
+type="tel"
+id="phone"
+name="phone"
+required
+aria-required="true"
+>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input
+type="email"
+id="email"
+name="email"
+required
+aria-required="true"
+>
+                </div>
+                <div class="form-group">
+                    <label for="address">Job Address</label>
+                    <input
+type="text"
+id="address"
+name="address"
+>
+                </div>
+                <div class="form-group">
+                    <label for="projectType">Project Type <span class="required">*</span></label>
+                    <select
+id="projectType"
+name="projectType"
+required
+aria-required="true"
+>
+                        <option value="">Select a project type</option>
+                        <option value="custom-home">Custom Home</option>
+                        <option value="adu">ADU</option>
+                        <option value="remodel">Remodel</option>
+                        <option value="addition">Addition</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea
+id="message"
+name="message"
+placeholder="Tell us about your project..."
+></textarea>
+                </div>
+                <button type="submit" class="submit-button">Submit Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Active Framing, Inc.</h3>
+                    <p>Professional framing contractor serving San Diego County homeowners and general contractors.</p>
+                    <div class="license-badge">CSLB License #1067252</div>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>
+                        <strong>Phone:</strong><br>
+                        (760) 213-8112
+                    </p>
+                    <p>
+                        <strong>Email:</strong><br>
+                        <a href="mailto:ActiveFraming@gmail.com">ActiveFraming@gmail.com</a>
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3>Location</h3>
+                    <p>
+                        Escondido, CA<br>
+                        Serving San Diego County
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Active Framing, Inc. All rights reserved. | CSLB License #1067252</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic form validation
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const projectType = document.getElementById('projectType').value;
+            
+            if (!name || !phone || !email || !projectType) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Phone validation (basic)
+            const phonePattern = /^[\d\s\-\(\)]+$/;
+            if (!phonePattern.test(phone)) {
+                alert('Please enter a valid phone number.');
+                return;
+            }
+            
+            // Success message (in production, this would submit to a backend)
+            alert('Thank you for your request! We will contact you shortly to discuss your project.');
+            this.reset();
+        });
+
+        // Smooth scrolling for anchor links (already handled by CSS, but adding fallback)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href !== '') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
