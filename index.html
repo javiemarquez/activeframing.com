@@ -8,6 +8,13 @@
 
   <title>Active Framing, Inc. – Custom Residential Framing Across San Diego County</title>
 
+  <!-- Favicons -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -39,10 +46,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 1rem;
     }
 
     .logo img {
-      height: 84px;   /* bigger + clean */
+      height: 84px;
       width: auto;
       display: block;
     }
@@ -52,22 +60,38 @@
       color: #fff;
       text-decoration: none;
       padding: .8rem 1.75rem;
-      border-radius: 4px;
+      border-radius: 6px;
       font-weight: 500;
+      border: 0;
+      cursor: pointer;
+      display: inline-block;
+      transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
     }
 
-    .cta-button:hover { background: #A01830; }
+    .cta-button:hover {
+      background: #A01830;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(196, 30, 58, 0.18);
+    }
 
-    /* ===== HERO ===== */
+    /* ===== HERO (Background Image) ===== */
     .hero {
-      background: linear-gradient(135deg, #f5f5f5, #ffffff);
       padding: 5rem 2rem;
       text-align: center;
+
+      /* Background image + white overlay for readability */
+      background:
+        linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)),
+        url("bg.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     .hero h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
+      line-height: 1.15;
     }
 
     .hero h2 {
@@ -78,9 +102,7 @@
     }
 
     /* ===== SECTIONS ===== */
-    section {
-      padding: 5rem 2rem;
-    }
+    section { padding: 5rem 2rem; }
 
     .container {
       max-width: 1200px;
@@ -104,8 +126,60 @@
       border: 2px solid #e5e5e5;
       padding: 2rem;
       text-align: center;
-      border-radius: 4px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
     }
+
+    /* ===== CONTACT FORM ===== */
+    .contact-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .contact-card {
+      border: 1px solid #e5e5e5;
+      border-radius: 10px;
+      padding: 1.75rem;
+      background: #fff;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+    }
+
+    .contact-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      margin: .9rem 0 .35rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: .85rem .9rem;
+      border: 1px solid #d8d8d8;
+      border-radius: 10px;
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .contact-links a {
+      color: #C41E3A;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-links a:hover { text-decoration: underline; }
 
     /* ===== FOOTER ===== */
     footer {
@@ -145,6 +219,10 @@
     }
 
     /* ===== MOBILE ===== */
+    @media (max-width: 900px) {
+      .contact-wrap { grid-template-columns: 1fr; }
+    }
+
     @media (max-width: 768px) {
       .hero h1 { font-size: 2rem; }
       .hero h2 { font-size: 1.2rem; }
@@ -157,7 +235,7 @@
 
 <header>
   <div class="header-container">
-    <a href="#home" class="logo">
+    <a href="#home" class="logo" aria-label="Active Framing Home">
       <img src="logo-hd.png" alt="Active Framing Logo">
     </a>
     <a href="#contact" class="cta-button">Request a Bid</a>
@@ -193,7 +271,46 @@
 <section id="contact">
   <div class="container">
     <h2 class="section-title">Request a Bid</h2>
-    <p style="text-align:center;">Call or email to get started.</p>
+
+    <div class="contact-wrap">
+      <div class="contact-card">
+        <h3>Send a Request</h3>
+        <p style="color:#444;">Fill this out and we’ll reach back out to schedule a walk-through.</p>
+
+        <form action="https://formspree.io/f/xojaaepq" method="POST">
+          <label for="name">Name</label>
+          <input id="name" name="name" autocomplete="name" required>
+
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" autocomplete="tel" required>
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+
+          <label for="address">Job Address</label>
+          <input id="address" name="address" autocomplete="street-address">
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Project type, timeline, and link to plans (Google Drive/Dropbox)"></textarea>
+
+          <input type="hidden" name="_subject" value="New Bid Request - ActiveFraming.com">
+
+          <button class="cta-button" type="submit" style="margin-top: 1rem;">Send</button>
+        </form>
+      </div>
+
+      <div class="contact-card">
+        <h3>Contact</h3>
+        <p class="contact-links">
+          <strong>Phone:</strong> <a href="tel:+17602138112">(760) 213-8112</a><br>
+          <strong>Email:</strong> <a href="mailto:activeframing@gmail.com">ActiveFraming@gmail.com</a><br>
+          <strong>License:</strong> CSLB #1067252
+        </p>
+        <p style="color:#444; margin-top: 1rem;">
+          Serving San Diego County — custom homes, ADUs, remodels, and additions.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
