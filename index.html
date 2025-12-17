@@ -48,25 +48,14 @@
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: .6rem;
+            display: block;
             text-decoration: none;
         }
 
         .logo-img {
-            height: 42px;
+            height: 64px;
             width: auto;
-        }
-
-        .logo-text {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #000;
-        }
-
-        .logo-text span {
-            color: #C41E3A;
+            display: block;
         }
 
         .cta-button {
@@ -155,8 +144,9 @@
         }
 
         .footer-logo {
-            height: 32px;
+            height: 28px;
             margin-bottom: 1rem;
+            opacity: 0.75;
         }
 
         .license-badge {
@@ -175,10 +165,11 @@
             font-size: .9rem;
         }
 
+        /* MOBILE */
         @media(max-width:768px){
             .hero h1 { font-size: 2rem; }
             .hero h2 { font-size: 1.25rem; }
-            .logo-img { height: 36px; }
+            .logo-img { height: 52px; }
         }
     </style>
 </head>
@@ -189,7 +180,6 @@
     <div class="header-container">
         <a href="#home" class="logo" aria-label="Active Framing Home">
             <img src="logo.png" alt="Active Framing Logo" class="logo-img">
-            <span class="logo-text">Active <span>Framing</span></span>
         </a>
 
         <a href="#contact" class="cta-button">Request a Bid</a>
