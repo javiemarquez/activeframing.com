@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +14,10 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#C41E3A">
 
+  <!-- Performance: preload hero background + logo (helps mobile feel snappier) -->
+  <link rel="preload" as="image" href="bg.jpg">
+  <link rel="preload" as="image" href="logo-hd.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -29,7 +32,7 @@
       line-height: 1.6;
     }
 
-    /* Keep phrases together (prevents “Diego County” split) */
+    /* Keep phrases together (prevents “San Diego” splitting weirdly) */
     .nowrap { white-space: nowrap; }
 
     /* ===== HEADER ===== */
@@ -37,15 +40,16 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: #fff;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
       border-bottom: 1px solid #e5e5e5;
-      box-shadow: 0 2px 4px rgba(0,0,0,.05);
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
     }
 
     .header-container {
       max-width: 1200px;
       margin: auto;
-      padding: 1.25rem 2rem;
+      padding: 1.05rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -63,28 +67,29 @@
       background: #C41E3A;
       color: #fff;
       text-decoration: none;
-      padding: .8rem 1.75rem;
-      border-radius: 10px;
+      padding: .85rem 1.8rem;
+      border-radius: 12px;
       font-weight: 500;
       border: 0;
       cursor: pointer;
       display: inline-block;
       transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+      box-shadow: 0 10px 22px rgba(196, 30, 58, 0.15);
     }
 
     .cta-button:hover {
       background: #A01830;
       transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(196, 30, 58, 0.18);
+      box-shadow: 0 14px 28px rgba(196, 30, 58, 0.20);
     }
 
-    /* ===== HERO (Full background + adjustable overlay) ===== */
+    /* ===== HERO (Full background + stronger visibility) ===== */
     .hero {
       position: relative;
       text-align: center;
 
-      /* Full-screen feel on desktop */
-      min-height: calc(100vh - 120px);
+      /* True full-screen on desktop */
+      min-height: calc(100vh - 110px);
       padding: 5.5rem 2rem;
 
       display: flex;
@@ -97,12 +102,21 @@
       background-repeat: no-repeat;
     }
 
-    /* Overlay controls how visible the background is (lower = more visible) */
+    /* Overlay: LOWER = background more visible */
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(255, 255, 255, 0.72); /* was ~0.88; this shows the photo more */
+      background: rgba(255, 255, 255, 0.58);
+      pointer-events: none;
+    }
+
+    /* Optional subtle dark vignette to make text readable while keeping image visible */
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.06) 90%);
       pointer-events: none;
     }
 
@@ -111,21 +125,30 @@
       z-index: 1;
       max-width: 980px;
       margin: 0 auto;
+
+      /* Add a soft “glass card” so we can drop overlay and still read text */
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(255,255,255,0.55);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.10);
+      border-radius: 18px;
+      padding: 2.2rem 2rem;
+      backdrop-filter: blur(6px);
     }
 
     .hero h1 {
-      /* Responsive sizing + better control across devices */
-      font-size: clamp(2.1rem, 4vw, 3.25rem);
+      font-size: clamp(2.1rem, 4vw, 3.15rem);
       margin-bottom: 1rem;
       line-height: 1.12;
       letter-spacing: -0.02em;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.08);
     }
 
     .hero h2 {
-      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
       font-weight: 300;
-      margin-bottom: 2.5rem;
-      color: #333;
+      margin-bottom: 2rem;
+      color: #222;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.06);
     }
 
     /* ===== SECTIONS ===== */
@@ -138,8 +161,9 @@
 
     .section-title {
       text-align: center;
-      font-size: 2.4rem;
+      font-size: 2.35rem;
       margin-bottom: 3rem;
+      letter-spacing: -0.01em;
     }
 
     /* ===== SERVICES ===== */
@@ -153,9 +177,48 @@
       border: 2px solid #e5e5e5;
       padding: 2rem;
       text-align: center;
-      border-radius: 12px;
+      border-radius: 14px;
       background: #fff;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.05);
+    }
+
+    .service-card h3 { margin-bottom: .5rem; }
+
+    /* ===== PROJECTS (Photos) ===== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #e9e9e9;
+      background: #fff;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-meta {
+      padding: .95rem 1rem 1.05rem;
+    }
+
+    .project-meta strong {
+      display: block;
+      font-size: 1.05rem;
+      margin-bottom: .2rem;
+    }
+
+    .project-meta span {
+      color: #555;
+      font-size: .95rem;
     }
 
     /* ===== CONTACT FORM ===== */
@@ -170,10 +233,10 @@
 
     .contact-card {
       border: 1px solid #e5e5e5;
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 1.75rem;
       background: #fff;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.05);
     }
 
     .contact-card h3 {
@@ -218,7 +281,7 @@
     .footer-logo {
       height: 36px;
       width: auto;
-      opacity: .9;
+      opacity: .92;
       margin-bottom: 1rem;
     }
 
@@ -233,8 +296,9 @@
       background: #C41E3A;
       display: inline-block;
       padding: .5rem 1rem;
-      border-radius: 6px;
+      border-radius: 8px;
       margin-top: .75rem;
+      font-weight: 500;
     }
 
     .footer-bottom {
@@ -249,11 +313,14 @@
     @media (max-width: 900px) {
       .contact-wrap { grid-template-columns: 1fr; }
       .hero { min-height: auto; padding: 5rem 1.25rem; }
+      .hero-content { padding: 2rem 1.25rem; }
+      .project-card img { height: 200px; }
     }
 
     @media (max-width: 768px) {
       .logo img { height: 64px; }
-      .hero::before { background: rgba(255,255,255,0.70); } /* slightly more photo on mobile too */
+      .header-container { padding: .95rem 1.25rem; }
+      .hero::before { background: rgba(255,255,255,0.56); }
     }
   </style>
 </head>
@@ -263,7 +330,7 @@
 <header>
   <div class="header-container">
     <a href="#home" class="logo" aria-label="Active Framing Home">
-      <img src="logo-hd.png" alt="Active Framing Logo">
+      <img src="logo-hd.png" alt="Active Framing Logo" decoding="async" fetchpriority="high">
     </a>
     <a href="#contact" class="cta-button">Request a Bid</a>
   </div>
@@ -292,6 +359,54 @@
       <div class="service-card">
         <h3>Remodels & Additions</h3>
         <p>Clean, accurate framing for expansions and structural upgrades.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <h2 class="section-title">Recent Projects</h2>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="project_1.jpg" alt="Active Framing project photo 1" loading="lazy" decoding="async">
+        <div class="project-meta">
+          <strong>Project 1</strong>
+          <span>Residential framing</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="project_2.jpg" alt="Active Framing project photo 2" loading="lazy" decoding="async">
+        <div class="project-meta">
+          <strong>Project 2</strong>
+          <span>Residential framing</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="project_3.jpg" alt="Active Framing project photo 3" loading="lazy" decoding="async">
+        <div class="project-meta">
+          <strong>Project 3</strong>
+          <span>Residential framing</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="project_4.jpg" alt="Active Framing project photo 4" loading="lazy" decoding="async">
+        <div class="project-meta">
+          <strong>Project 4</strong>
+          <span>Residential framing</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="project_5.jpg" alt="Active Framing project photo 5" loading="lazy" decoding="async">
+        <div class="project-meta">
+          <strong>Project 5</strong>
+          <span>Residential framing</span>
+        </div>
       </div>
     </div>
   </div>
@@ -347,7 +462,7 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <img src="logo-hd.png" alt="Active Framing Logo" class="footer-logo">
+        <img src="logo-hd.png" alt="Active Framing Logo" class="footer-logo" loading="lazy" decoding="async">
         <p>Serving San Diego County</p>
         <div class="license">CSLB #1067252</div>
       </div>
