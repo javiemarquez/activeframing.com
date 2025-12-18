@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,7 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#C41E3A">
 
-  <!-- Performance: preload hero background + logo (helps mobile feel snappier) -->
+  <!-- Performance: preload hero background + logo -->
   <link rel="preload" as="image" href="bg.jpg">
   <link rel="preload" as="image" href="logo-hd.png">
 
@@ -32,7 +33,7 @@
       line-height: 1.6;
     }
 
-    /* Keep phrases together (prevents “San Diego” splitting weirdly) */
+    /* Keep phrases together */
     .nowrap { white-space: nowrap; }
 
     /* ===== HEADER ===== */
@@ -83,12 +84,10 @@
       box-shadow: 0 14px 28px rgba(196, 30, 58, 0.20);
     }
 
-    /* ===== HERO (Full background + stronger visibility) ===== */
+    /* ===== HERO (Full background, NO white frame) ===== */
     .hero {
       position: relative;
       text-align: center;
-
-      /* True full-screen on desktop */
       min-height: calc(100vh - 110px);
       padding: 5.5rem 2rem;
 
@@ -102,21 +101,21 @@
       background-repeat: no-repeat;
     }
 
-    /* Overlay: LOWER = background more visible */
+    /* Lighter overlay = more visible background */
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(255, 255, 255, 0.58);
+      background: rgba(255, 255, 255, 0.34);
       pointer-events: none;
     }
 
-    /* Optional subtle dark vignette to make text readable while keeping image visible */
+    /* tiny vignette for readability */
     .hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at center, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.06) 90%);
+      background: radial-gradient(circle at center, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.08) 92%);
       pointer-events: none;
     }
 
@@ -126,29 +125,29 @@
       max-width: 980px;
       margin: 0 auto;
 
-      /* Add a soft “glass card” so we can drop overlay and still read text */
-      background: rgba(255,255,255,0.55);
-      border: 1px solid rgba(255,255,255,0.55);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.10);
-      border-radius: 18px;
-      padding: 2.2rem 2rem;
-      backdrop-filter: blur(6px);
+      /* REMOVE the “white frame” */
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      border-radius: 0;
+      padding: 0;
+      backdrop-filter: none;
     }
 
     .hero h1 {
-      font-size: clamp(2.1rem, 4vw, 3.15rem);
+      font-size: clamp(2.05rem, 4vw, 3.15rem);
       margin-bottom: 1rem;
       line-height: 1.12;
       letter-spacing: -0.02em;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      text-shadow: 0 3px 16px rgba(0,0,0,0.22);
     }
 
     .hero h2 {
       font-size: clamp(1.05rem, 2vw, 1.35rem);
       font-weight: 300;
       margin-bottom: 2rem;
-      color: #222;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      color: #111;
+      text-shadow: 0 3px 14px rgba(0,0,0,0.18);
     }
 
     /* ===== SECTIONS ===== */
@@ -201,24 +200,9 @@
 
     .project-card img {
       width: 100%;
-      height: 220px;
+      height: 240px;
       object-fit: cover;
       display: block;
-    }
-
-    .project-meta {
-      padding: .95rem 1rem 1.05rem;
-    }
-
-    .project-meta strong {
-      display: block;
-      font-size: 1.05rem;
-      margin-bottom: .2rem;
-    }
-
-    .project-meta span {
-      color: #555;
-      font-size: .95rem;
     }
 
     /* ===== CONTACT FORM ===== */
@@ -313,14 +297,16 @@
     @media (max-width: 900px) {
       .contact-wrap { grid-template-columns: 1fr; }
       .hero { min-height: auto; padding: 5rem 1.25rem; }
-      .hero-content { padding: 2rem 1.25rem; }
-      .project-card img { height: 200px; }
+      .project-card img { height: 210px; }
     }
 
     @media (max-width: 768px) {
       .logo img { height: 64px; }
       .header-container { padding: .95rem 1.25rem; }
-      .hero::before { background: rgba(255,255,255,0.56); }
+      /* slightly stronger overlay on small screens so text stays readable */
+      .hero::before { background: rgba(255,255,255,0.40); }
+      /* a touch smaller so “San Diego County” is more likely to stay on one line */
+      .hero h1 { font-size: clamp(1.85rem, 7vw, 2.55rem); }
     }
   </style>
 </head>
@@ -370,43 +356,23 @@
 
     <div class="projects-grid">
       <div class="project-card">
-        <img src="project_1.jpg" alt="Active Framing project photo 1" loading="lazy" decoding="async">
-        <div class="project-meta">
-          <strong>Project 1</strong>
-          <span>Residential framing</span>
-        </div>
+        <img src="project_1.jpg" alt="Active Framing project photo" loading="lazy" decoding="async">
       </div>
 
       <div class="project-card">
-        <img src="project_2.jpg" alt="Active Framing project photo 2" loading="lazy" decoding="async">
-        <div class="project-meta">
-          <strong>Project 2</strong>
-          <span>Residential framing</span>
-        </div>
+        <img src="project_2.jpg" alt="Active Framing project photo" loading="lazy" decoding="async">
       </div>
 
       <div class="project-card">
-        <img src="project_3.jpg" alt="Active Framing project photo 3" loading="lazy" decoding="async">
-        <div class="project-meta">
-          <strong>Project 3</strong>
-          <span>Residential framing</span>
-        </div>
+        <img src="project_3.jpg" alt="Active Framing project photo" loading="lazy" decoding="async">
       </div>
 
       <div class="project-card">
-        <img src="project_4.jpg" alt="Active Framing project photo 4" loading="lazy" decoding="async">
-        <div class="project-meta">
-          <strong>Project 4</strong>
-          <span>Residential framing</span>
-        </div>
+        <img src="project_4.jpg" alt="Active Framing project photo" loading="lazy" decoding="async">
       </div>
 
       <div class="project-card">
-        <img src="project_5.jpg" alt="Active Framing project photo 5" loading="lazy" decoding="async">
-        <div class="project-meta">
-          <strong>Project 5</strong>
-          <span>Residential framing</span>
-        </div>
+        <img src="DJI_0188.jpg" alt="Active Framing project photo" loading="lazy" decoding="async">
       </div>
     </div>
   </div>
