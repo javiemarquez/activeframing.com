@@ -1,558 +1,428 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Active Framing, Inc. - Professional framing contractor serving San Diego County. Custom homes, ADUs, remodels & additions. CSLB License #1067252" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Active Framing, Inc. — Custom Residential Framing in San Diego County</title>
+<meta name="description" content="Active Framing, Inc. is an owner-supervised framing contractor serving San Diego County — custom homes, ADUs, remodels & additions. CSLB #1067252. Call (760) 213-8112." />
+<meta name="theme-color" content="#151515" />
+<link rel="canonical" href="https://activeframing.com/" />
+<meta property="og:title" content="Active Framing, Inc. — Custom Residential Framing, San Diego County" />
+<meta property="og:description" content="Owner-supervised framing for custom homes, ADUs, remodels & additions across San Diego County. CSLB #1067252." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://activeframing.com/" />
+<meta property="og:image" content="https://activeframing.com/assets/hero-desktop.webp" />
+<meta property="og:image:alt" content="Custom residential framing project in San Diego County" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16.png" />
+<link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" />
 
-  <title>Active Framing, Inc. - Custom Residential Framing Across San Diego County</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
 
-  <!-- Favicons (keep these if you uploaded them; harmless if some are missing) -->
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="./base.css" />
+<link rel="stylesheet" href="./style.css" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --brand:#b23a45;
-      --text:#111;
-      --muted:#555;
-      --border:#e8e8e8;
-      --card:#ffffff;
-      --max:1100px;
-      --shadow: 0 12px 30px rgba(0,0,0,.10);
-      --radius:18px;
-    }
-
-    *{ box-sizing:border-box; margin:0; padding:0; }
-    html{ scroll-behavior:smooth; }
-    body{
-      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-      color:var(--text);
-      background:#fff;
-      line-height:1.6;
-    }
-    a{ color:inherit; text-decoration:none; }
-
-    /* Header */
-    header{
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background:#fff;
-      border-bottom:1px solid var(--border);
-    }
-    .header-container{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 14px 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width: 220px;
-    }
-    .brand img{
-      height: 52px;          /* bigger + crisp */
-      width: auto;
-      image-rendering: auto;
-      display:block;
-    }
-
-    .cta-button{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 12px 18px;
-      border-radius: 12px;
-      background: var(--brand);
-      color:#fff;
-      font-weight:700;
-      border:0;
-      cursor:pointer;
-      transition: transform .08s ease, opacity .15s ease;
-      white-space: nowrap;
-    }
-    .cta-button:hover{ opacity:.95; }
-    .cta-button:active{ transform: translateY(1px); }
-
-    /* Sections */
-    section{ padding: 64px 18px; }
-    .container{ max-width: var(--max); margin:0 auto; }
-    .section-title{
-      text-align:center;
-      font-size: clamp(1.7rem, 2.4vw, 2.2rem);
-      letter-spacing: -0.02em;
-      margin-bottom: 28px;
-      font-weight: 800;
-    }
-    .section-subtitle{
-      text-align:center;
-      color:var(--muted);
-      margin: -14px auto 28px;
-      max-width: 760px;
-    }
-
-    /* HERO */
-    .hero{
-      position: relative;
-      padding: 0;
-      overflow:hidden;
-    }
-    .hero-wrap{
-      position: relative;
-      min-height: 520px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding: 70px 18px;
-    }
-
-    /* Use real <img> so mobile loads faster than CSS bg */
-    .hero-bg{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit: cover;
-      object-position: center;
-      z-index:0;
-      transform: scale(1.02);
-    }
-
-    /* Make background more visible but still readable */
-    .hero-overlay{
-      position:absolute;
-      inset:0;
-      background: rgba(255,255,255,.40); /* lower = more visible image */
-      z-index:1;
-    }
-
-    .hero-content{
-      position: relative;
-      z-index:2;
-      max-width: 980px;
-      padding: 0;
-    }
-
-    .hero h1{
-      font-size: clamp(2.1rem, 3.4vw, 3.25rem);
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      font-weight: 900;
-      color:#0a0a0a;
-      text-shadow: 0 3px 14px rgba(0,0,0,.18);
-      margin-bottom: 14px;
-    }
-
-    /* Motto: bolder + readable, NO OVAL */
-    .hero h2{
-      font-size: clamp(1.05rem, 1.7vw, 1.25rem);
-      font-weight: 800;
-      color:#111;
-      text-shadow: 0 2px 10px rgba(0,0,0,.18);
-      margin-bottom: 22px;
-      padding: 0;              /* remove pill look */
-      background: transparent;  /* remove oval */
-      backdrop-filter: none;    /* remove blur oval */
-      border-radius: 0;
-      display:block;
-    }
-
-    .hero .cta-button{
-      padding: 14px 22px;
-      border-radius: 14px;
-      font-size: 1.05rem;
-      box-shadow: 0 14px 30px rgba(178,58,69,.25);
-    }
-
-    /* Services */
-    .services-grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 10px;
-    }
-    .card{
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
-    .card h3{
-      font-size: 1.15rem;
-      margin-bottom: 10px;
-      font-weight: 800;
-    }
-    .card p{ color: var(--muted); }
-
-    /* WHY CHOOSE */
-    .why-grid{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-    .why-item{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px 18px 20px;
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-      text-align:left;
-    }
-    .why-icon{
-      width:44px;
-      height:44px;
-      border-radius: 999px;
-      background: rgba(178,58,69,.12);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin-bottom: 12px;
-    }
-    .why-icon span{
-      display:inline-flex;
-      width:30px;
-      height:30px;
-      border-radius: 10px;
-      background: var(--brand);
-      color:#fff;
-      align-items:center;
-      justify-content:center;
-      font-weight:900;
-      line-height:1;
-    }
-    .why-item h3{
-      font-size: 1.05rem;
-      margin-bottom: 8px;
-      font-weight: 900;
-    }
-    .why-item p{
-      color: var(--muted);
-      font-size: .98rem;
-    }
-
-    /* Projects */
-    .projects-grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .project-card{
-      border-radius: var(--radius);
-      overflow:hidden;
-      border:1px solid var(--border);
-      background:#fff;
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
-    .project-card img{
-      width:100%;
-      height: 240px;
-      object-fit: cover;
-      display:block;
-    }
-
-    /* Contact */
-    .contact-wrap{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 18px;
-      align-items:start;
-    }
-    form{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
-    .field-row{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    label{
-      display:block;
-      font-weight: 700;
-      font-size: .95rem;
-      margin-bottom: 6px;
-    }
-    input, textarea{
-      width:100%;
-      padding: 12px 12px;
-      border-radius: 12px;
-      border:1px solid #ddd;
-      font: inherit;
-      outline:none;
-    }
-    textarea{ min-height: 120px; resize: vertical; }
-    .form-actions{
-      margin-top: 12px;
-      display:flex;
-      justify-content:flex-start;
-    }
-
-    .contact-card{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
-    .contact-card h3{
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-      font-weight: 900;
-    }
-    .contact-card p{
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-    .contact-card a{
-      color: #0b57d0;
-      text-decoration: underline;
-    }
-
-    /* Footer */
-    footer{
-      border-top:1px solid var(--border);
-      padding: 26px 18px;
-      background:#fff;
-    }
-    .footer-inner{
-      max-width: var(--max);
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .footer-logo{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-    }
-    .footer-logo img{
-      height: 34px; /* small, not huge */
-      width:auto;
-      display:block;
-    }
-    .fineprint{
-      color:#777;
-      font-size: .92rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 980px){
-      .services-grid{ grid-template-columns: 1fr; }
-      .why-grid{ grid-template-columns: 1fr 1fr; }
-      .projects-grid{ grid-template-columns: 1fr 1fr; }
-      .contact-wrap{ grid-template-columns: 1fr; }
-      .hero-wrap{ min-height: 520px; }
-    }
-    @media (max-width: 560px){
-      .brand img{ height: 46px; }
-      .cta-button{ padding: 12px 16px; }
-      .field-row{ grid-template-columns: 1fr; }
-      .why-grid{ grid-template-columns: 1fr; }
-
-      /* Keep "San Diego County" together better on small screens */
-      .hero h1{ padding: 0 6px; }
-    }
-  </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "name": "Active Framing, Inc.",
+  "telephone": "+1-760-213-8112",
+  "email": "Activeframing@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "2314 Felicita Road",
+    "addressLocality": "Escondido",
+    "addressRegion": "CA",
+    "postalCode": "92029",
+    "addressCountry": "US"
+  },
+  "areaServed": "San Diego County, CA",
+  "description": "Owner-supervised residential framing contractor specializing in custom homes, ADUs, remodels, and additions across San Diego County.",
+  "url": "https://activeframing.com/"
+}
+</script>
 </head>
-
 <body>
+<a href="#main" class="skip-link">Skip to content</a>
 
-  <header>
-    <div class="header-container">
-      <a class="brand" href="#home" aria-label="Active Framing home">
-        <img src="logo-hd.png" alt="Active Framing logo" decoding="async" />
+<!-- ===================== Header ===================== -->
+<header class="header" id="site-header">
+  <div class="wrap header-inner">
+    <a href="#home" class="brand" aria-label="Active Framing, Inc. — home">
+      <img class="brand-logo is-light" src="./assets/logo-full.png" alt="Active Framing, Inc. logo" width="3039" height="1269" />
+      <img class="brand-logo is-dark" src="./assets/logo-full-dark.png" alt="Active Framing, Inc. logo" width="3039" height="1269" />
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <div class="header-actions">
+      <a class="phone-chip" href="tel:+17602138112" aria-label="Call Active Framing at (760) 213-8112">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (760) 213-8112
       </a>
-
-      <a class="cta-button" href="#contact" aria-label="Request a Bid">Request a Bid</a>
+      <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="#contact" class="btn btn--primary btn--sm">Get a Free Estimate</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- HERO -->
+<!-- Mobile nav panel -->
+<div class="mobile-nav" data-mobile-nav>
+  <div class="mobile-nav-head">
+    <span class="brand" aria-hidden="true">
+      <img class="brand-logo is-light" src="./assets/logo-full.png" alt="" width="3039" height="1269" />
+      <img class="brand-logo is-dark" src="./assets/logo-full-dark.png" alt="" width="3039" height="1269" />
+    </span>
+    <button data-nav-close aria-label="Close menu" style="width:44px;height:44px;border:1px solid var(--color-border);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;color:var(--color-text);">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-nav-links" aria-label="Mobile">
+    <a href="#services" data-nav-close-link>Services</a>
+    <a href="#why-us" data-nav-close-link>Why Us</a>
+    <a href="#projects" data-nav-close-link>Projects</a>
+    <a href="#about" data-nav-close-link>About</a>
+    <a href="#contact" data-nav-close-link>Contact</a>
+  </nav>
+  <div class="mobile-nav-foot">
+    <a class="btn btn--outline btn--block" href="tel:+17602138112">Call (760) 213-8112</a>
+    <a class="btn btn--primary btn--block" href="#contact" data-nav-close-link>Get a Free Estimate</a>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- ===================== Hero ===================== -->
   <section class="hero" id="home">
-    <div class="hero-wrap">
-      <img class="hero-bg" src="bg.jpg" alt="Framing background" fetchpriority="high" decoding="async" />
-      <div class="hero-overlay" aria-hidden="true"></div>
-
-      <div class="hero-content">
-        <h1>
-          Custom Residential Framing Across San Diego&nbsp;County
-        </h1>
-        <h2>Building with Integrity — Framing Done Right</h2>
-        <a class="cta-button" href="#contact" aria-label="Get Your Free Estimate">Get Your Free Estimate</a>
+    <div class="hero-media">
+      <picture>
+        <source media="(max-width: 640px)" srcset="./assets/hero-mobile.webp" />
+        <img src="./assets/hero-desktop.webp" alt="Aerial view of a custom home under construction with wood framing and roof trusses, San Diego County" width="2000" height="1333" fetchpriority="high" />
+      </picture>
+    </div>
+    <div class="hero-scrim"></div>
+    <div class="wrap hero-content">
+      <p class="hero-eyebrow">Licensed Framing Contractor · CSLB #1067252</p>
+      <h1>WE <em>FRAME</em> SAN DIEGO'S CUSTOM HOMES, ADUS &amp; ADDITIONS</h1>
+      <p class="hero-sub">Owner-supervised crews building the structural core your project stands on — square, code-compliant, and on schedule, from Escondido to the coast.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn--primary">Get Your Free Estimate</a>
+        <a href="#projects" class="btn btn--outline">See Our Work</a>
+      </div>
+      <div class="trust-bar">
+        <div class="trust-item"><strong>CSLB #1067252</strong> Licensed &amp; insured</div>
+        <div class="trust-item"><strong>100%</strong> owner-supervised jobs</div>
+        <div class="trust-item"><strong>San Diego County</strong> service area</div>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="container">
-      <h2 class="section-title">Our Services</h2>
+  <!-- ===================== Services ===================== -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What we build</span>
+        <h2 class="section-title">Framing services built around your project</h2>
+        <p class="section-lede">From ground-up custom homes to tight infill additions, we handle the structural framing everything else in the build depends on.</p>
+      </div>
+
+      <div class="service-feature" data-reveal>
+        <div>
+          <span class="service-tag">01 — Custom Homes</span>
+          <h3>Custom Home Framing</h3>
+          <p>Full structural framing for new custom-home construction — foundation-to-roof layout, wall and floor systems, engineered lumber, and roof trusses. We work directly from stamped plans, so every trade that follows us inherits a square, true structure.</p>
+          <ul class="service-list" role="list">
+            <li>Foundation-to-roof structural framing</li>
+            <li>Engineered lumber &amp; truss installation</li>
+            <li>Shear wall &amp; lateral bracing systems</li>
+            <li>Framing inspections coordinated with your GC</li>
+          </ul>
+        </div>
+        <div class="service-feature-media">
+          <img src="./assets/project-2.webp" alt="Custom home framing with roof trusses and sheathing nearing completion under a golden San Diego sunset" width="1600" height="1198" loading="lazy" decoding="async" />
+        </div>
+      </div>
 
       <div class="services-grid">
-        <div class="card">
-          <h3>Custom Homes</h3>
-          <p>Expert framing for new custom home construction. We work with precision and attention to detail to bring your vision to life with structural integrity.</p>
-        </div>
-
-        <div class="card">
-          <h3>ADUs</h3>
-          <p>Accessory Dwelling Units built to code and crafted with care. Maximize your property value with quality framing for your ADU project.</p>
-        </div>
-
-        <div class="card">
-          <h3>Remodels &amp; Additions</h3>
-          <p>Clean, accurate framing for expansions and structural upgrades. We handle tie-ins, pop-tops, and second-story additions.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY CHOOSE -->
-  <section id="why">
-    <div class="container">
-      <h2 class="section-title">Why Choose Active Framing</h2>
-
-      <div class="why-grid">
-        <div class="why-item">
-          <div class="why-icon"><span>✓</span></div>
-          <h3>Owner-Supervised Work</h3>
-          <p>Every project receives direct oversight from our experienced owner, ensuring quality and accountability at every stage.</p>
-        </div>
-
-        <div class="why-item">
-          <div class="why-icon"><span>✓</span></div>
-          <h3>Code-Compliant Framing</h3>
-          <p>We stay current with California building codes and ensure all work meets or exceeds regulatory requirements.</p>
-        </div>
-
-        <div class="why-item">
-          <div class="why-icon"><span>✓</span></div>
-          <h3>Clean Job Sites</h3>
-          <p>Professional work means professional job sites. We maintain clean, organized work areas and respect your property.</p>
-        </div>
-
-        <div class="why-item">
-          <div class="why-icon"><span>✓</span></div>
-          <h3>Reliable Scheduling</h3>
-          <p>We show up on time and keep your project on track. Clear communication and dependable service you can count on.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="container">
-      <h2 class="section-title">Recent Projects</h2>
-      <p class="section-subtitle">A quick look at recent work—clean lines, solid structure, and job sites kept tight.</p>
-
-      <div class="projects-grid">
-        <div class="project-card">
-          <img src="project_1.jpg" alt="Active Framing project photo" loading="lazy" decoding="async">
-        </div>
-        <div class="project-card">
-          <img src="project_2.jpg" alt="Active Framing project photo" loading="lazy" decoding="async">
-        </div>
-        <div class="project-card">
-          <img src="project_3.jpg" alt="Active Framing project photo" loading="lazy" decoding="async">
-        </div>
-        <div class="project-card">
-          <img src="project_4.jpg" alt="Active Framing project photo" loading="lazy" decoding="async">
-        </div>
-        <div class="project-card">
-          <img src="DJI_0188.jpg" alt="Active Framing project photo" loading="lazy" decoding="async">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <h2 class="section-title">Request a Bid</h2>
-      <p class="section-subtitle">Fill this out and we’ll reach back out to schedule a walk-through.</p>
-
-      <div class="contact-wrap">
-        <form action="https://formspree.io/f/xojaaepq" method="POST">
-          <div class="field-row">
-            <div>
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" autocomplete="name" required>
-            </div>
-            <div>
-              <label for="phone">Phone</label>
-              <input id="phone" name="phone" type="tel" autocomplete="tel">
-            </div>
+        <article class="service-card" data-reveal>
+          <div class="service-card-media">
+            <img src="./assets/project-3.webp" alt="Accessory dwelling unit framing on a San Diego hillside property" width="1600" height="1184" loading="lazy" decoding="async" />
           </div>
-
-          <div class="field-row">
-            <div>
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" autocomplete="email" required>
-            </div>
-            <div>
-              <label for="jobAddress">Job Address</label>
-              <input id="jobAddress" name="jobAddress" type="text" autocomplete="street-address">
-            </div>
+          <div class="service-card-body">
+            <span class="service-tag">02 — ADUs</span>
+            <h4>Accessory Dwelling Units</h4>
+            <p>ADUs framed to current California code — a clean, efficient build from slab to roofline that maximizes your property's value.</p>
           </div>
+        </article>
+        <article class="service-card" data-reveal>
+          <div class="service-card-media">
+            <img src="./assets/project-4.webp" alt="Second-story addition framing tied into an existing San Diego home" width="1600" height="1320" loading="lazy" decoding="async" />
+          </div>
+          <div class="service-card-body">
+            <span class="service-tag">03 — Remodels &amp; Additions</span>
+            <h4>Remodels &amp; Additions</h4>
+            <p>Pop-tops, second-story additions, and room extensions with clean tie-ins to your existing structure — matched framing, no shortcuts.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
+  <!-- ===================== Why Choose Us ===================== -->
+  <section class="section section--ink" id="why-us">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Why active framing</span>
+        <h2 class="section-title">Built on accountability</h2>
+        <p class="section-lede">Framing is the trade every other trade depends on. Here's how we make sure it's right the first time.</p>
+      </div>
+
+      <div class="why-list">
+        <div class="why-item" data-reveal>
+          <span class="why-num">01</span>
           <div>
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Project type, timeline, and link to plans (Google Drive/Dropbox)"></textarea>
+            <h4>Owner-Supervised Work</h4>
+            <p>Every project gets direct oversight from owner Javier Marquez — not a rotating cast of unsupervised crews.</p>
           </div>
+        </div>
+        <div class="why-item" data-reveal>
+          <span class="why-num">02</span>
+          <div>
+            <h4>Code-Compliant Framing</h4>
+            <p>We build to current California Building Code and CSLB standards, so your framing inspections pass the first time.</p>
+          </div>
+        </div>
+        <div class="why-item" data-reveal>
+          <span class="why-num">03</span>
+          <div>
+            <h4>Clean Job Sites</h4>
+            <p>Materials staged, debris managed, and your property respected — from the first wall snap to final walk-off.</p>
+          </div>
+        </div>
+        <div class="why-item" data-reveal>
+          <span class="why-num">04</span>
+          <div>
+            <h4>Reliable Scheduling</h4>
+            <p>We show up when we say we will and keep your GC's timeline on track, with clear communication throughout.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <div class="form-actions">
-            <button class="cta-button" type="submit">Send</button>
+  <!-- ===================== Projects ===================== -->
+  <section class="section" id="projects">
+    <div class="wrap">
+      <div class="section-head section-head--split">
+        <div>
+          <span class="eyebrow">Recent work</span>
+          <h2 class="section-title">Projects across San Diego County</h2>
+          <p class="section-lede">A look at framing in progress — real job sites, real structures.</p>
+        </div>
+      </div>
+
+      <div class="gallery">
+        <div class="gallery-item gallery-item--a" data-reveal>
+          <img src="./assets/project-1.webp" alt="Aerial view of a custom home framing project with roof trusses complete, overlooking the San Diego coastline" width="1600" height="1066" loading="lazy" decoding="async" />
+          <div class="gallery-caption">Custom Home — Roof Framing Complete</div>
+        </div>
+        <div class="gallery-item gallery-item--b" data-reveal>
+          <img src="./assets/project-2.webp" alt="Framing crew working on a custom home at golden hour" width="1600" height="1198" loading="lazy" decoding="async" />
+          <div class="gallery-caption">Custom Home — Structural Framing</div>
+        </div>
+        <div class="gallery-item gallery-item--c" data-reveal>
+          <img src="./assets/project-3.webp" alt="Completed home framing viewed from above with surrounding hillside" width="1600" height="1184" loading="lazy" decoding="async" />
+          <div class="gallery-caption">Hillside Custom Build</div>
+        </div>
+        <div class="gallery-item gallery-item--c" data-reveal>
+          <img src="./assets/project-4.webp" alt="Aerial view of a finished framing structure with pool deck" width="1600" height="1320" loading="lazy" decoding="async" />
+          <div class="gallery-caption">Custom Home — Exterior Framing</div>
+        </div>
+        <div class="gallery-item gallery-item--b" data-reveal>
+          <img src="./assets/project-5.webp" alt="Drone photo of a residential framing job site with construction fencing and equipment staged" width="1400" height="1082" loading="lazy" decoding="async" />
+          <div class="gallery-caption">Job Site Progress</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== About ===================== -->
+  <section class="section" id="about">
+    <div class="wrap about-grid">
+      <div class="about-media" data-reveal>
+        <img src="./assets/project-1.webp" alt="Custom home framing project managed by Active Framing, Inc." width="1600" height="1066" loading="lazy" decoding="async" />
+        <div class="about-badge">
+          <strong>LICENSED</strong>
+          <span>CSLB #1067252</span>
+        </div>
+      </div>
+      <div class="about-copy" data-reveal>
+        <span class="eyebrow">Owner-operated</span>
+        <h2 class="section-title">Led by Javier Marquez</h2>
+        <p>Active Framing, Inc. is a locally owned framing contractor based in Escondido, serving custom home builders and homeowners across San Diego County.</p>
+        <p>Every project gets direct oversight from owner Javier Marquez — from the first wall snap to the final frame walk. We built this business on a simple standard: show up, frame it right, and stand behind the work. Whether it's a hillside custom home or a tight infill ADU, our crews bring the same attention to detail and respect for your job site.</p>
+        <div class="about-stats">
+          <div class="about-stat">
+            <strong>#1067252</strong>
+            <span>CSLB License</span>
+          </div>
+          <div class="about-stat">
+            <strong>100%</strong>
+            <span>Owner-Supervised</span>
+          </div>
+          <div class="about-stat">
+            <strong>Escondido</strong>
+            <span>Locally Based</span>
+          </div>
+        </div>
+        <div class="area-strip" aria-label="Areas served">
+          <span class="area-chip">Escondido</span>
+          <span class="area-chip">San Marcos</span>
+          <span class="area-chip">Carlsbad</span>
+          <span class="area-chip">Encinitas</span>
+          <span class="area-chip">Rancho Santa Fe</span>
+          <span class="area-chip">Poway</span>
+          <span class="area-chip">Vista</span>
+          <span class="area-chip">+ San Diego County</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Contact ===================== -->
+  <section class="section section--tight" id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Get in touch</span>
+        <h2 class="section-title">Request a bid</h2>
+        <p class="section-lede">Tell us about your project and we'll follow up to schedule a walk-through and provide a framing estimate.</p>
+      </div>
+
+      <div class="contact-grid">
+        <form class="contact-form" action="https://formspree.io/f/xojaaepq" method="POST" data-contact-form>
+          <input type="hidden" name="_subject" value="New estimate request from activeframing.com" />
+          <input class="form-honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <div class="field-set">
+            <div class="field-row">
+              <div class="field">
+                <label for="name">Full name</label>
+                <input type="text" id="name" name="name" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" required />
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" autocomplete="email" required />
+              </div>
+              <div class="field">
+                <label for="job-type">Project type</label>
+                <select id="job-type" name="project_type">
+                  <option value="Custom Home">Custom Home</option>
+                  <option value="ADU">ADU</option>
+                  <option value="Remodel &amp; Addition">Remodel &amp; Addition</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="address">Job address</label>
+              <input type="text" id="address" name="address" autocomplete="street-address" />
+            </div>
+            <div class="field">
+              <label for="message">Project details</label>
+              <textarea id="message" name="message" placeholder="Square footage, timeline, plans status, etc."></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary btn--block" data-form-submit>Send Request</button>
+            <p class="form-error" data-form-error role="alert" hidden></p>
+            <p class="form-note">We typically respond within one business day. For urgent inquiries, call <a href="tel:+17602138112" style="color:var(--color-primary);">(760) 213-8112</a>.</p>
+          </div>
+          <div class="form-success" data-form-success role="status" tabindex="-1">
+            <strong style="font-family:var(--font-display);display:block;margin-bottom:var(--space-2);color:var(--color-primary);">REQUEST RECEIVED</strong>
+            Thanks — we've got your details and will call or email you within one business day to schedule a walk-through.
           </div>
         </form>
 
-        <div class="contact-card">
-          <h3>Contact</h3>
-          <p><strong>Phone:</strong> <a href="tel:+17602138112">(760) 213-8112</a></p>
-          <p><strong>Email:</strong> <a href="mailto:Activeframing@gmail.com">Activeframing@gmail.com</a></p>
-          <p><strong>License:</strong> CSLB #1067252</p>
-          <p class="fineprint">Serving San Diego County — custom homes, ADUs, remodels, and additions.</p>
-        </div>
+        <aside class="contact-card">
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div>
+              <span class="contact-label">Phone</span>
+              <a href="tel:+17602138112">(760) 213-8112</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+            <div>
+              <span class="contact-label">Email</span>
+              <a href="mailto:Activeframing@gmail.com">Activeframing@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <span class="contact-label">Office</span>
+              <p>2314 Felicita Road<br />Escondido, CA 92029</p>
+            </div>
+          </div>
+          <div class="contact-divider"></div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2 3 6v6c0 5 4 8 9 10 5-2 9-5 9-10V6z"/></svg>
+            <div>
+              <span class="contact-label">License</span>
+              <p>CSLB #1067252</p>
+            </div>
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 20l-5.447-2.724A1 1 0 0 1 3 16.382V5.618a1 1 0 0 1 1.447-.894L9 7m0 13 6-3m-6 3V7m6 10 5.447 2.724A1 1 0 0 0 21 18.618V7.618a1 1 0 0 0-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+            <div>
+              <span class="contact-label">Service Area</span>
+              <p>San Diego County</p>
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
+</main>
 
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-logo">
-        <img src="logo-hd.png" alt="Active Framing logo" loading="lazy" decoding="async">
-        <div class="fineprint">© <span id="year"></span> Active Framing Inc.</div>
-      </div>
-      <div class="fineprint">CSLB #1067252 • San Diego County</div>
+<!-- ===================== Footer ===================== -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img class="footer-brand-mark" src="./assets/icon-mark.png" alt="Active Framing, Inc." width="1071" height="1269" />
+      <span class="footer-meta">© <span data-year></span> Active Framing, Inc. · CSLB #1067252 · Escondido, CA · Serving San Diego County</span>
     </div>
-  </footer>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-
+<script src="./app.js" defer></script>
 </body>
 </html>
