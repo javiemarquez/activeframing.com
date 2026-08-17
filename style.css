@@ -911,7 +911,18 @@ h2.section-title {
   width: auto;
   display: block;
 }
+.footer-copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.footer-slogan {
+  font-size: var(--text-sm);
+  line-height: 1.25;
+  color: var(--color-text);
+}
 .footer-meta {
+  display: block;
   font-size: var(--text-xs);
   color: var(--color-text-faint);
 }
